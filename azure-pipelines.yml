@@ -19,7 +19,7 @@ steps:
   inputs:
     sshEndpoint: 'ssh_myvm'
     runOptions: 'commands'
-    commands: 'echo $USER'
+    commands: 'echo "Hello from Azurevm"'
     readyTimeout: '20000'
 
 # - task: Gradle@2
