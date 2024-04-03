@@ -14,14 +14,23 @@ variables:
   JDKVersion: 19.0.1
   
 steps:
-- task: Gradle@2
+
+- task: SSH@0
   inputs:
-    workingDirectory: '/app'
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
-    tasks: 'build'
+    sshEndpoint: 'ssh_myvm'
+    runOptions: 'commands'
+    commands: 'echo $USER'
+    readyTimeout: '20000'
+
+# - task: Gradle@2
+#   inputs:
+#     workingDirectory: '/app'
+#     gradleWrapperFile: 'gradlew'
+#     gradleOptions: '-Xmx3072m'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: '1.8'
+#     jdkArchitectureOption: 'x64'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/TEST-*.xml'
+#     tasks: 'build'
+
