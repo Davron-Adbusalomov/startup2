@@ -1,0 +1,115 @@
+2024-04-03T08:24:53.958+05:00  INFO 10252 --- [startUp2] [main] c.example.startUp2.StartUp2Application   : Starting StartUp2Application using Java 19.0.1 with PID 10252 (C:\Program Files\learn-spring-framework\startUp2\startUp2\build\classes\java\main started by Asus in C:\Program Files\learn-spring-framework\startUp2)
+2024-04-03T08:24:54.045+05:00  INFO 10252 --- [startUp2] [main] c.example.startUp2.StartUp2Application   : No active profile set, falling back to 1 default profile: "default"
+2024-04-03T08:24:55.309+05:00  INFO 10252 --- [startUp2] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-03T08:24:55.309+05:00  INFO 10252 --- [startUp2] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-03T08:24:55.362+05:00  INFO 10252 --- [startUp2] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-03T08:24:55.476+05:00  INFO 10252 --- [startUp2] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-03T08:24:55.559+05:00  INFO 10252 --- [startUp2] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-03T08:24:55.595+05:00  INFO 10252 --- [startUp2] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-03T08:24:55.872+05:00  INFO 10252 --- [startUp2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-03T08:24:56.048+05:00  INFO 10252 --- [startUp2] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@40fe8fd5
+2024-04-03T08:24:56.049+05:00  INFO 10252 --- [startUp2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-03T08:24:56.106+05:00  WARN 10252 --- [startUp2] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-03T08:24:57.089+05:00  INFO 10252 --- [startUp2] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-03T08:24:57.107+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.107+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "announcement" does not exist, skipping
+2024-04-03T08:24:57.108+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.108+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "announcement" does not exist, skipping
+2024-04-03T08:24:57.108+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.108+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "announcement_media" does not exist, skipping
+2024-04-03T08:24:57.109+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.109+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "category_announcements" does not exist, skipping
+2024-04-03T08:24:57.110+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.110+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "category_announcements" does not exist, skipping
+2024-04-03T08:24:57.110+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.110+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "comments" does not exist, skipping
+2024-04-03T08:24:57.111+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.111+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "comments" does not exist, skipping
+2024-04-03T08:24:57.111+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.111+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "users" does not exist, skipping
+2024-04-03T08:24:57.112+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.112+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "users" does not exist, skipping
+2024-04-03T08:24:57.114+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.114+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "admin" does not exist, skipping
+2024-04-03T08:24:57.114+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.114+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "announcement" does not exist, skipping
+2024-04-03T08:24:57.115+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.115+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "announcement_media" does not exist, skipping
+2024-04-03T08:24:57.115+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.115+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "category" does not exist, skipping
+2024-04-03T08:24:57.116+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.116+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "category_announcements" does not exist, skipping
+2024-04-03T08:24:57.116+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.116+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "comments" does not exist, skipping
+2024-04-03T08:24:57.117+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.117+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "location" does not exist, skipping
+2024-04-03T08:24:57.117+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.117+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tariff" does not exist, skipping
+2024-04-03T08:24:57.118+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T08:24:57.118+05:00  WARN 10252 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "users" does not exist, skipping
+2024-04-03T08:24:57.835+05:00  WARN 10252 --- [startUp2] [main] c.a.c.http.netty.implementation.Utility  : The following Netty dependencies have versions that do not match the versions specified in the azure-core-http-netty pom.xml file. This may result in unexpected behavior. If your application runs without issue this message can be ignored, otherwise please update the Netty dependencies to match the versions specified in the pom.xml file. Versions found in runtime: 'io.netty:netty-common' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-handler' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-handler-proxy' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-buffer' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-codec' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http2' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-unix-common' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-epoll' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-kqueue' version: 4.1.107.Final (expected: 4.1.101.Final)
+2024-04-03T08:24:58.488+05:00  INFO 10252 --- [startUp2] [main] c.example.startUp2.StartUp2Application   : Started StartUp2Application in 5.502 seconds (process running for 6.3)
+2024-04-03T08:25:04.444+05:00  INFO 10252 --- [startUp2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-03T08:25:04.448+05:00  INFO 10252 --- [startUp2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-03T11:14:21.282+05:00  INFO 16592 --- [startUp2] [main] c.example.startUp2.StartUp2Application   : Starting StartUp2Application using Java 19.0.1 with PID 16592 (C:\Program Files\learn-spring-framework\startUp2\startUp2\build\classes\java\main started by Asus in C:\Program Files\learn-spring-framework\startUp2)
+2024-04-03T11:14:21.285+05:00  INFO 16592 --- [startUp2] [main] c.example.startUp2.StartUp2Application   : No active profile set, falling back to 1 default profile: "default"
+2024-04-03T11:14:22.882+05:00  INFO 16592 --- [startUp2] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-03T11:14:22.882+05:00  INFO 16592 --- [startUp2] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-04-03T11:14:22.952+05:00  INFO 16592 --- [startUp2] [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-03T11:14:23.083+05:00  INFO 16592 --- [startUp2] [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-03T11:14:23.168+05:00  INFO 16592 --- [startUp2] [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.4.4.Final
+2024-04-03T11:14:23.220+05:00  INFO 16592 --- [startUp2] [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2024-04-03T11:14:23.578+05:00  INFO 16592 --- [startUp2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-03T11:14:23.791+05:00  INFO 16592 --- [startUp2] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@45297e7
+2024-04-03T11:14:23.793+05:00  INFO 16592 --- [startUp2] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-03T11:14:23.846+05:00  WARN 16592 --- [startUp2] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-04-03T11:14:25.085+05:00  INFO 16592 --- [startUp2] [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-04-03T11:14:25.110+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.111+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "announcement" does not exist, skipping
+2024-04-03T11:14:25.112+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.113+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "announcement" does not exist, skipping
+2024-04-03T11:14:25.114+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.114+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "announcement_media" does not exist, skipping
+2024-04-03T11:14:25.115+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.115+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "category_announcements" does not exist, skipping
+2024-04-03T11:14:25.116+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.116+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "category_announcements" does not exist, skipping
+2024-04-03T11:14:25.117+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.117+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "comments" does not exist, skipping
+2024-04-03T11:14:25.118+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.118+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "comments" does not exist, skipping
+2024-04-03T11:14:25.119+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.119+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "users" does not exist, skipping
+2024-04-03T11:14:25.119+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.119+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "users" does not exist, skipping
+2024-04-03T11:14:25.121+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.123+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "admin" does not exist, skipping
+2024-04-03T11:14:25.124+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.124+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "announcement" does not exist, skipping
+2024-04-03T11:14:25.124+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.124+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "announcement_media" does not exist, skipping
+2024-04-03T11:14:25.125+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.125+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "category" does not exist, skipping
+2024-04-03T11:14:25.126+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.126+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "category_announcements" does not exist, skipping
+2024-04-03T11:14:25.126+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.126+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "comments" does not exist, skipping
+2024-04-03T11:14:25.127+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.127+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "location" does not exist, skipping
+2024-04-03T11:14:25.128+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.128+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "tariff" does not exist, skipping
+2024-04-03T11:14:25.129+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T11:14:25.129+05:00  WARN 16592 --- [startUp2] [main] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "users" does not exist, skipping
+2024-04-03T11:14:26.075+05:00  WARN 16592 --- [startUp2] [main] c.a.c.http.netty.implementation.Utility  : The following Netty dependencies have versions that do not match the versions specified in the azure-core-http-netty pom.xml file. This may result in unexpected behavior. If your application runs without issue this message can be ignored, otherwise please update the Netty dependencies to match the versions specified in the pom.xml file. Versions found in runtime: 'io.netty:netty-common' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-handler' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-handler-proxy' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-buffer' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-codec' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-codec-http2' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-unix-common' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-epoll' version: 4.1.107.Final (expected: 4.1.101.Final),'io.netty:netty-transport-native-kqueue' version: 4.1.107.Final (expected: 4.1.101.Final)
+2024-04-03T11:14:26.948+05:00  INFO 16592 --- [startUp2] [main] c.example.startUp2.StartUp2Application   : Started StartUp2Application in 6.248 seconds (process running for 7.243)
+2024-04-03T11:28:53.837+05:00  WARN 16592 --- [startUp2] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m29s715ms478µs400ns).
+2024-04-03T11:50:19.256+05:00  WARN 16592 --- [startUp2] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m25s35ms265µs400ns).
+2024-04-03T12:40:17.706+05:00  WARN 16592 --- [startUp2] [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m27s738ms89µs700ns).
+2024-04-03T13:07:00.354+05:00  WARN 16592 --- [startUp2] [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T13:07:00.369+05:00  WARN 16592 --- [startUp2] [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "category_announcements" does not exist, skipping
+2024-04-03T13:07:00.371+05:00  WARN 16592 --- [startUp2] [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T13:07:00.371+05:00  WARN 16592 --- [startUp2] [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : relation "category_announcements" does not exist, skipping
+2024-04-03T13:07:00.415+05:00  WARN 16592 --- [startUp2] [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : SQL Warning Code: 0, SQLState: 00000
+2024-04-03T13:07:00.415+05:00  WARN 16592 --- [startUp2] [SpringApplicationShutdownHook] o.h.engine.jdbc.spi.SqlExceptionHelper   : table "category_announcements" does not exist, skipping
+2024-04-03T13:07:00.532+05:00  INFO 16592 --- [startUp2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-03T13:07:00.604+05:00  INFO 16592 --- [startUp2] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
