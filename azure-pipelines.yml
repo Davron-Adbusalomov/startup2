@@ -7,7 +7,8 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  default
+# vmImage: ubuntu-latest
 
 variables:
   JDKVersion: 19.0.1
