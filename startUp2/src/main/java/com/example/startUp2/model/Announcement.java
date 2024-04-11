@@ -1,6 +1,5 @@
 package com.example.startUp2.model;
 
-import com.example.startUp2.enums.Gender;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +22,7 @@ public class Announcement {
 
     private String description;
 
-    private Gender gender;
+    private String gender;
 
     private LocalDate date;
 
@@ -41,7 +40,7 @@ public class Announcement {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @OneToMany(mappedBy = "announcement")
+    @OneToMany
     private List<Announcement_media> images;
 
     @OneToMany(mappedBy = "announcement")

@@ -1,6 +1,5 @@
 package com.example.startUp2.config;
 
-import com.example.startUp2.enums.Role;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.Cookie;
@@ -84,16 +83,28 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return "User does not have any role";
         }
 
-        if (endpoint.contains("/")){
-            if (roles.contains(Role.ADMIN)){
-                return "allow";
-            }
+        if (endpoint.contains("/user")){
+            if (roles.contains("USER")) return "allow";
         }
 
-        if (endpoint.contains("/user")){
-            if (roles.contains(Role.USER)){
-                return "allow";
-            }
+        if (endpoint.contains("/announcement")){
+            if (roles.contains("USER")) return "allow";
+        }
+
+        if (endpoint.contains("/api/media")){
+            if (roles.contains("USER")) return "allow";
+        }
+
+        if (endpoint.contains("/tariff")){
+            if (roles.contains("USER")) return "allow";
+        }
+
+        if (endpoint.contains("/comments")){
+            if (roles.contains("USER")) return "allow";
+        }
+
+        if (endpoint.contains("/api/media/upload")){
+            if (roles.contains("USER")) return "allow";
         }
 
         return "Restricted!";

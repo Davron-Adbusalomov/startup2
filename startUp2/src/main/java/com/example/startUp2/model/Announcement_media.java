@@ -19,7 +19,4 @@ public class Announcement_media {
 
     private String url;
 
-    @ManyToOne
-    @JoinColumn(name = "announcement_id")
-    private Announcement announcement;
 }

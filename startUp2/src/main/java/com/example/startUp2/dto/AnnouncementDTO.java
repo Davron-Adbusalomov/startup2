@@ -1,11 +1,9 @@
 package com.example.startUp2.dto;
 
-import com.example.startUp2.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -19,7 +17,7 @@ public class AnnouncementDTO {
 
     private String description;
 
-    private Gender gender;
+    private String gender;
 
     private String author_telegram;
 

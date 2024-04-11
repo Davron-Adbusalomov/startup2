@@ -4,8 +4,11 @@ import com.example.startUp2.config.JwtService;
 import com.example.startUp2.dto.UsersDTO;
 import com.example.startUp2.dto.UsersLoginDTO;
 import com.example.startUp2.dto.UsersRegisterDTO;
+import com.example.startUp2.model.Announcement;
+import com.example.startUp2.model.Comments;
 import com.example.startUp2.model.Location;
 import com.example.startUp2.model.Users;
+import com.example.startUp2.repository.LocationRepository;
 import com.example.startUp2.repository.UsersRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +21,9 @@ public class UsersService {
 
     @Autowired
     private UsersRepository usersRepository;
+
+    @Autowired
+    private LocationRepository locationRepository;
 
     private final JwtService jwtService;
 
@@ -70,6 +76,7 @@ public class UsersService {
             Location location = new Location();
             location.setLat(usersDTO.getLocation().getLat());
             location.setLon(usersDTO.getLocation().getLon());
+            locationRepository.save(location);
             editedUser.setLocation(location);
         }
         if (!usersDTO.getPassword_img().isEmpty()){
@@ -91,6 +98,15 @@ public class UsersService {
         if (users.isEmpty()){
             throw new EntityNotFoundException("No user with this id");
         }
+
+        for (Announcement a:users.get().getAnnouncement()) {
+            a.setAuthor(null);
+        }
+
+        for (Comments c:users.get().getComments()) {
+            c.setUsers(null);
+        }
+
         usersRepository.delete(users.get());
         return "Successfully deleted!";
     }

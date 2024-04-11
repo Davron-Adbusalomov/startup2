@@ -15,7 +15,7 @@ public class MediaController {
     private MediaService mediaService;
 
     @PostMapping("/upload")
-    public ResponseEntity<String> uploadMedia(@RequestParam("file") MultipartFile file) {
+    public ResponseEntity<String> uploadMedia(MultipartFile file) {
         try {
             String url = mediaService.uploadMedia(file);
             return ResponseEntity.ok(url);
