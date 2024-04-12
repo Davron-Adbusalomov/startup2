@@ -34,7 +34,7 @@ public class UsersController {
         try{
             String token = usersService.loginUser(usersLoginDTO);
             Cookie cookie = new Cookie("jwt", token);
-            cookie.setMaxAge(100);
+            cookie.setMaxAge(300);
             cookie.setPath("/");
             cookie.setHttpOnly(true);
             response.addCookie(cookie);
