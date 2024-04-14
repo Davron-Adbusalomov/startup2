@@ -11,12 +11,12 @@ pool:
 # vmImage: ubuntu-latest
 
 variables:
-  JDKVersion: 19.0.1
+  JDKVersion: 'C:\\agent\\jdk-19.0.1'
   
 steps:
 - task: Gradle@2
   inputs:
-    workingDirectory: '/app'
+    workingDirectory: '/startUp2'
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
