@@ -15,17 +15,26 @@ steps:
     cleanDestinationDirectory: true
     createExtractDirectory: false
 
-- task: Gradle@2
+# - task: Gradle@2
+#   inputs:
+#     workingDirectory: 'C:\Program Files\learn-spring-framework\startUp2'
+#     gradleWrapperFile: 'C:\Program Files\learn-spring-framework\startUp2\startUp2\gradle\wrapper\gradle-wrapper.jar'
+#     gradleOptions: '-Xmx3072m'
+#     javaHomeOption: 'JDKVersion'
+#     jdkVersionOption: 'default'
+#     jdkArchitectureOption: 'x64'
+#     publishJUnitResults: true
+#     testResultsFiles: '**/TEST-*.xml'
+#     tasks: 'build'
+- task: Gradle@3
   inputs:
+    gradleWrapperFile: 'C:\Program Files\learn-spring-framework\startUp2\startUp2\gradle\wrapper\gradle-wrapper.jar'
     workingDirectory: 'C:\Program Files\learn-spring-framework\startUp2'
-    gradleWrapperFile: 'gradlew'
-    gradleOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: 'default'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/TEST-*.xml'
     tasks: 'build'
+    publishJUnitResults: false
+    javaHomeOption: 'JDKVersion'
+    sonarQubeRunAnalysis: false
+    spotBugsAnalysis: false
 
 - task: SSH@0
   inputs:
