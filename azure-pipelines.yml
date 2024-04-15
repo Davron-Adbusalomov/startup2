@@ -1,47 +1,26 @@
-# Gradle
-# Build your Java project and run tests with Gradle using a Gradle wrapper script.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
-trigger:
-- main
-
 pool:
   default
-# vmImage: ubuntu-latest
 
 variables:
   JDKVersion: '19.0.1'
-  
+
 steps:
-# - task: Gradle@2
-#   inputs:
-#     workingDirectory: '/startUp2'
-#     gradleWrapperFile: 'gradlew'
-#     gradleOptions: '-Xmx3072m'
-#     javaHomeOption: 'JDKVersion'
-#     jdkVersionOption: 'default'
-#     jdkArchitectureOption: 'x64'
-#     publishJUnitResults: true
-#     testResultsFiles: '**/TEST-*.xml'
-#     tasks: 'build'
-
-- task: SSH@0
+- task: PowerShell@2
+  displayName: 'Print Java environment variables'
   inputs:
-    sshEndpoint: 'ssh_myvm'
-    runOptions: 'commands'
-    commands: 'echo "Hello from Azurevm"'
-    readyTimeout: '20000'
+    targetType: 'inline'
+    script: |
+      Write-Host "JAVA_HOME:" $env:JAVA_HOME
+      Write-Host "PATH:" $env:PATH
 
-# - task: Gradle@2
-#   inputs:
-#     workingDirectory: '/app'
-#     gradleWrapperFile: 'gradlew'
-#     gradleOptions: '-Xmx3072m'
-#     javaHomeOption: 'JDKVersion'
-#     jdkVersionOption: '1.8'
-#     jdkArchitectureOption: 'x64'
-#     publishJUnitResults: true
-#     testResultsFiles: '**/TEST-*.xml'
-#     tasks: 'build'
-
+- task: Gradle@2
+  inputs:
+    workingDirectory: '/startUp2'
+    gradleWrapperFile: 'gradlew'
+    gradleOptions: '-Xmx3072m'
+    javaHomeOption: 'JDKVersion'
+    jdkVersionOption: 'default'
+    jdkArchitectureOption: 'x64'
+    publishJUnitResults: true
+    testResultsFiles: '/TEST-*.xml'
+    tasks: 'build'
