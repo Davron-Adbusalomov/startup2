@@ -7,11 +7,11 @@ pool:
 steps:
 - task: Gradle@2
   inputs:
-    workingDirectory: 'startUp2'
+    workingDirectory: '/startUp2'
     gradleWrapperFile: 'gradlew'
     gradleOptions: '-Xmx3072m'
     javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.8'
+    jdkVersionOption: '1.7'
     jdkArchitectureOption: 'x64'
     publishJUnitResults: true
     testResultsFiles: '**/TEST-*.xml'
