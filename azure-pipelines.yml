@@ -11,7 +11,7 @@ pool:
 # vmImage: ubuntu-latest
 
 variables:
-  JDKVersion: 'C:\\agent\\jdk-19.0.1'
+  JDKVersion: '19.0.1'
   
 steps:
 - task: Gradle@2
