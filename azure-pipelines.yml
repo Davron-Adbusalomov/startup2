@@ -28,7 +28,7 @@ steps:
 #     tasks: 'build'
 - task: Gradle@3
   inputs:
-    gradleWrapperFile: 'startUp2/gradle/wrapper/gradle-wrapper.jar'
+    gradleWrapperFile: 'startUp2/gradlew.bat'
     workingDirectory: 'startUp2'
     tasks: 'build'
     publishJUnitResults: false
