@@ -28,8 +28,8 @@ steps:
 #     tasks: 'build'
 - task: Gradle@3
   inputs:
-    gradleWrapperFile: 'C:\Program Files\learn-spring-framework\startUp2\startUp2\gradlew.bat'
-    workingDirectory: 'C:\Program Files\learn-spring-framework\startUp2'
+    gradleWrapperFile: 'startUp2/gradle/wrapper/gradle-wrapper.jar'
+    workingDirectory: 'startUp2'
     tasks: 'build'
     publishJUnitResults: false
     javaHomeOption: 'JDKVersion'
