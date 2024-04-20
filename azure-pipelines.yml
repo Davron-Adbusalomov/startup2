@@ -1,33 +1,72 @@
+# trigger:
+# - main
+
+# pool:
+#   name: Default
+
+# steps:
+# - task: JavaToolInstaller@0
+#   inputs:
+#     versionSpec: '19'
+#     jdkArchitectureOption: 'x64'
+#     jdkSourceOption: 'LocalDirectory'
+#     jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
+#     jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
+#     cleanDestinationDirectory: true
+#     createExtractDirectory: false
+
+# - task: Gradle@3
+#   inputs:
+#     gradleWrapperFile: 'startUp2/gradlew.bat'
+#     workingDirectory: 'startUp2'
+#     tasks: 'build'
+#     publishJUnitResults: false
+#     javaHomeOption: 'JDKVersion'
+#     sonarQubeRunAnalysis: false
+#     spotBugsAnalysis: false
+
+# - task: SSH@0
+#   inputs:
+#     sshEndpoint: 'ssh_myvm'
+#     runOptions: 'commands'
+#     commands: 'echo "Hello from Azurevm"'
+#     readyTimeout: '20000'
+
 trigger:
 - main
 
 pool:
-  name: Default
+  vmImage: 'ubuntu-latest'
 
-steps:
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '19'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'LocalDirectory'
-    jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
-    jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
-    cleanDestinationDirectory: true
-    createExtractDirectory: false
+jobs:
+- job: deploy
+  steps:
+  - task: JavaToolInstaller@0
+    inputs:
+      versionSpec: '19'
+      jdkArchitectureOption: 'x64'
+      jdkSourceOption: 'LocalDirectory'
+      jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
+      jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
+      cleanDestinationDirectory: true
+      createExtractDirectory: false
 
-- task: Gradle@3
-  inputs:
-    gradleWrapperFile: 'startUp2/gradlew.bat'
-    workingDirectory: 'startUp2'
-    tasks: 'build'
-    publishJUnitResults: false
-    javaHomeOption: 'JDKVersion'
-    sonarQubeRunAnalysis: false
-    spotBugsAnalysis: false
+  - task: Gradle@3
+    inputs:
+      gradleWrapperFile: 'startUp2/gradlew.bat'
+      workingDirectory: 'startUp2'
+      tasks: 'build'
+      publishJUnitResults: false
+      javaHomeOption: 'JDKVersion'
+      sonarQubeRunAnalysis: false
+      spotBugsAnalysis: false
 
-- task: SSH@0
-  inputs:
-    sshEndpoint: 'ssh_myvm'
-    runOptions: 'commands'
-    commands: 'echo "Hello from Azurevm"'
-    readyTimeout: '20000'
+  - task: SSH@0
+    inputs:
+      sshEndpoint: 'ssh_myvm'
+      runOptions: 'commands'
+      commands: |
+        ssh username@52.191.77.169 "mkdir -p /home/azureuser/"
+        scp $(System.DefaultWorkingDirectory)/startUp2/build/libs/*.jar username@52.191.77.169:/home/azureuser/
+      readyTimeout: '20000'
+
