@@ -67,6 +67,6 @@ jobs:
       runOptions: 'commands'
       commands: |
         ssh username@52.191.77.169 "mkdir -p /home/azureuser/"
-        scp $(System.DefaultWorkingDirectory)/startUp2/build/libs/*.jar username@52.191.77.169:/home/azureuser/
+        scp /startUp2/build/libs/*.jar username@52.191.77.169:/home/azureuser/
       readyTimeout: '20000'
 
