@@ -64,7 +64,7 @@ jobs:
   # Publish artifact
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: '$(build.artifactStagingDirectory)' # Path to built artifacts
+      pathToPublish: 'C:\agent\_work\1\a' # Path to built artifacts
       artifactName: 'myapp'  # Customize artifact name
 
 - job: deploy
@@ -72,7 +72,7 @@ jobs:
   - task: DownloadPipelineArtifact@2
     inputs:
       artifactName: 'myapp' 
-      targetPath: $(Pipeline.Workspace)/myapp
+      targetPath: 'C:\agent\_work\1\a\myapp'
 
   # SSH connection and copy
   - task: SSH@0
