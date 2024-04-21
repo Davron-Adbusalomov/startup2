@@ -24,10 +24,28 @@ public class AnnouncementController {
         }
     }
 
-    @GetMapping("getAnnouncementDetails/{id}")
+    @GetMapping("/getAnnouncementDetails/{id}")
     public ResponseEntity<?> getAnnouncementById(@PathVariable Long id){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(announcementService.getAnnouncementDetails(id));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/GetTopAnnouncements/{categoryId}")
+    public ResponseEntity<?> getTopAnnouncements(@PathVariable Long categoryId){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(announcementService.getAllTops(categoryId));
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+    }
+
+    @GetMapping("/GetRegularAnnouncements/{categoryId}")
+    public ResponseEntity<?> getRegularAnnouncements(@PathVariable Long categoryId){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(announcementService.getAllRegulars(categoryId));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
         }

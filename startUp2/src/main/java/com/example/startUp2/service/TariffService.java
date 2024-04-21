@@ -81,8 +81,8 @@ public class TariffService {
             throw new EntityNotFoundException("No tariff found with this id");
         }
 
-        tariff.get().getUsers().add(users.get());
-        tariffRepository.save(tariff.get());
+        users.get().setTariff(tariff.get());
+        usersRepository.save(users.get());
 
         return "Successfully connected!";
     }
@@ -98,8 +98,8 @@ public class TariffService {
             throw new EntityNotFoundException("No tariff found with this id");
         }
 
-        tariff.get().getUsers().remove(users.get());
-        tariffRepository.save(tariff.get());
+        users.get().setTariff(null);
+        usersRepository.save(users.get());
 
         return "Successfully disconnected!";
     }

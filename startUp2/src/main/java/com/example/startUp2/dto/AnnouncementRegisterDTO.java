@@ -1,11 +1,9 @@
 package com.example.startUp2.dto;
 
-import com.example.startUp2.enums.Gender;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -16,7 +14,7 @@ import java.util.List;
 public class AnnouncementRegisterDTO {
     private String description;
 
-    private Gender gender;
+    private String gender;
 
     private Long author_id;
 
