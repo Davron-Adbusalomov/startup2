@@ -72,7 +72,7 @@ jobs:
   - task: DownloadPipelineArtifact@2
     inputs:
       artifactName: 'myapp' 
-      targetPath: $(Pipeline.Workspace) 
+      targetPath: $(Pipeline.Workspace)/myapp
 
   # SSH connection and copy
   - task: SSH@0
