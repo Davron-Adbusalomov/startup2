@@ -81,4 +81,5 @@ jobs:
       runOptions: 'commands'
       commands: |
         sudo mkdir -p /var/www/myapp  
-        sudo scp $(Pipeline.Workspace)/myapp/*.jar azurevm@52.191.77.169:/var/www/myapp
+        sudo scp /var/www/myapp/*.jar azurevm@52.191.77.169:/var/www/myapp
+
