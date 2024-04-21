@@ -75,11 +75,19 @@ jobs:
       targetPath: '$(Pipeline.Workspace)/myapp'
 
   # SSH connection and copy
-  - task: SSH@0
+  # - task: SSH@0
+  #   inputs:
+  #     sshEndpoint: 'ssh_myvm'
+  #     runOptions: 'commands'
+  #     commands: |
+  #       sudo mkdir -p /var/www/myapp  
+  #       sudo scp $(System.DefaultWorkingDirectory)/myapp/*.jar
+
+  - task: CopyFilesOverSSH@0
     inputs:
       sshEndpoint: 'ssh_myvm'
-      runOptions: 'commands'
-      commands: |
-        sudo mkdir -p /var/www/myapp  
-        sudo scp /var/www/myapp/*.jar azurevm@52.191.77.169:/var/www/myapp
+      sourceFolder: '$(Pipeline.Workspace)/myapp/*.jar'
+      contents: '**'
+      targetFolder: 'azurevm@52.191.77.169:/var/www/myapp'
+      readyTimeout: '20000'
 
