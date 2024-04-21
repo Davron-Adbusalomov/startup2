@@ -36,7 +36,7 @@ trigger:
 - main
 
 pool:
-  vmImage: 'ubuntu-latest'
+  name: Default
 
 jobs:
 - job: deploy
