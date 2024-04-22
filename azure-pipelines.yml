@@ -31,35 +31,52 @@ jobs:
   - task: PublishBuildArtifacts@1
     inputs:
       pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/'
-      artifactName: 'myapp'
+      artifactName: 'drop'
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
+      artifactName: 'script'
 
 
 - deployment: Java
   dependsOn: build
+  pool:
+    name: 'default'
   environment: azurevm
   strategy:
     runOnce:
       deploy:
         steps:
-        - task: DownloadPipelineArtifact@2
+        - task: DownloadBuildArtifacts@0
           inputs:
-            artifactName: 'myapp' 
-            targetPath: '$(Pipeline.Workspace)/myapp'
+            artifactName: 'drop' 
+            downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
+        - task: DownloadBuildArtifacts@0
+          inputs:
+            artifactName: 'script' 
+            downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
 
         - task: SSH@0
           inputs:
             sshEndpoint: 'ssh_myvm'
-            runOptions: 'commands'
-            commands: |
-              sudo mkdir -p /var/www/myapp
+            runOptions: 'inline'
+            inline: |
+              sudo java -jar $(System.DefaultWorkingDirectory)/target/*.jar
 
-        - task: CopyFilesOverSSH@0
-          inputs:
-            sshEndpoint: 'ssh_myvm'
-            sourceFolder: '$(Pipeline.Workspace)/myapp'
-            contents: '**/*'
-            targetFolder: 'azureuser@52.191.77.169:/var/www/myapp'
-            readyTimeout: '20000'
+        # - task: SSH@0
+        #   inputs:
+        #     sshEndpoint: 'ssh_myvm'
+        #     runOptions: 'commands'
+        #     commands: |
+        #       sudo mkdir -p /var/www/myapp
+
+        # - task: CopyFilesOverSSH@0
+        #   inputs:
+        #     sshEndpoint: 'ssh_myvm'
+        #     sourceFolder: '$(Pipeline.Workspace)/myapp'
+        #     contents: '**/*'
+        #     targetFolder: 'azureuser@52.191.77.169:/var/www/myapp'
+        #     readyTimeout: '20000'
 
         - task: SSH@0
           inputs:
