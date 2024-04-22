@@ -7,7 +7,7 @@ After=syslog.target
 
 [Service]
 User=azureuser
-ExecStart=/usr/bin/java -jar /var/www/myapp/app.jar
+ExecStart=/usr/bin/java -jar /var/www/myapp/*.jar
 SuccessExitStatus=143
 
 [Install]
