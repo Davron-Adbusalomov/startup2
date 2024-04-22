@@ -30,7 +30,7 @@ jobs:
   # Publish artifact
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/app.jar'
+      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/startUp2-0.0.1-SNAPSHOT.jar'
       artifactName: 'myapp'
 
 
