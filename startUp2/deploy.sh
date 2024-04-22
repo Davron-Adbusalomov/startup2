@@ -14,5 +14,5 @@ SuccessExitStatus=143
 WantedBy=multi-user.target
 EOF
 
-systemctl start myapp
-systemctl enable myapp
+sudo systemctl start myapp
+sudo systemctl enable myapp
