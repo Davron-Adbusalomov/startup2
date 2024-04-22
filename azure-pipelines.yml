@@ -32,10 +32,6 @@ jobs:
     inputs:
       pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/app.jar'
       artifactName: 'myapp'
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
-      artifactName: 'deploy_script'
 
 
 - job: deploy
@@ -43,11 +39,6 @@ jobs:
   - task: DownloadPipelineArtifact@2
     inputs:
       artifactName: 'myapp' 
-      targetPath: '$(Pipeline.Workspace)/myapp'
-
-  - task: DownloadPipelineArtifact@2
-    inputs:
-      artifactName: 'deploy_script' 
       targetPath: '$(Pipeline.Workspace)/myapp'
 
   - task: SSH@0
@@ -69,5 +60,5 @@ jobs:
     inputs:
       sshEndpoint: 'ssh_myvm'
       runOptions: 'script'
-      scriptPath: '$(Pipeline.Workspace)/myapp/deploy.sh'
+      scriptPath: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
       readyTimeout: '20000'
