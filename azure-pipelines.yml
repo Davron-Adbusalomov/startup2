@@ -69,5 +69,5 @@ jobs:
     inputs:
       sshEndpoint: 'ssh_myvm'
       runOptions: 'script'
-      scriptPath: '/var/www/myapp/deploy.sh'
+      scriptPath: '$(Pipeline.Workspace)/myapp/deploy.sh'
       readyTimeout: '20000'
