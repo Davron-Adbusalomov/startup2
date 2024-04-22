@@ -30,35 +30,40 @@ jobs:
   # Publish artifact
   - task: PublishBuildArtifacts@1
     inputs:
-      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/startUp2-0.0.1-SNAPSHOT.jar'
+      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/'
       artifactName: 'myapp'
 
 
-- job: deploy
-  steps:
-  - task: DownloadPipelineArtifact@2
-    inputs:
-      artifactName: 'myapp' 
-      targetPath: '$(Pipeline.Workspace)/myapp'
+- deployment: Java
+  dependsOn: build
+  environment: azurevm
+  strategy:
+    runOnce:
+      deploy:
+        steps:
+        - task: DownloadPipelineArtifact@2
+          inputs:
+            artifactName: 'myapp' 
+            targetPath: '$(Pipeline.Workspace)/myapp'
 
-  - task: SSH@0
-    inputs:
-      sshEndpoint: 'ssh_myvm'
-      runOptions: 'commands'
-      commands: |
-        sudo mkdir -p /var/www/myapp
+        - task: SSH@0
+          inputs:
+            sshEndpoint: 'ssh_myvm'
+            runOptions: 'commands'
+            commands: |
+              sudo mkdir -p /var/www/myapp
 
-  - task: CopyFilesOverSSH@0
-    inputs:
-      sshEndpoint: 'ssh_myvm'
-      sourceFolder: '$(Pipeline.Workspace)/myapp'
-      contents: '**/*'
-      targetFolder: 'azureuser@52.191.77.169:/var/www/myapp'
-      readyTimeout: '20000'
+        - task: CopyFilesOverSSH@0
+          inputs:
+            sshEndpoint: 'ssh_myvm'
+            sourceFolder: '$(Pipeline.Workspace)/myapp'
+            contents: '**/*'
+            targetFolder: 'azureuser@52.191.77.169:/var/www/myapp'
+            readyTimeout: '20000'
 
-  - task: SSH@0
-    inputs:
-      sshEndpoint: 'ssh_myvm'
-      runOptions: 'script'
-      scriptPath: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
-      readyTimeout: '20000'
+        - task: SSH@0
+          inputs:
+            sshEndpoint: 'ssh_myvm'
+            runOptions: 'script'
+            scriptPath: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
+            readyTimeout: '20000'
