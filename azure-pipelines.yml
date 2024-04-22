@@ -1,37 +1,3 @@
-# trigger:
-# - main
-
-# pool:
-#   name: Default
-
-# steps:
-# - task: JavaToolInstaller@0
-#   inputs:
-#     versionSpec: '19'
-#     jdkArchitectureOption: 'x64'
-#     jdkSourceOption: 'LocalDirectory'
-#     jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
-#     jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
-#     cleanDestinationDirectory: true
-#     createExtractDirectory: false
-
-# - task: Gradle@3
-#   inputs:
-#     gradleWrapperFile: 'startUp2/gradlew.bat'
-#     workingDirectory: 'startUp2'
-#     tasks: 'build'
-#     publishJUnitResults: false
-#     javaHomeOption: 'JDKVersion'
-#     sonarQubeRunAnalysis: false
-#     spotBugsAnalysis: false
-
-# - task: SSH@0
-#   inputs:
-#     sshEndpoint: 'ssh_myvm'
-#     runOptions: 'commands'
-#     commands: 'echo "Hello from Azurevm"'
-#     readyTimeout: '20000'
-
 trigger:
 - main
 
@@ -74,20 +40,17 @@ jobs:
       artifactName: 'myapp' 
       targetPath: '$(Pipeline.Workspace)/myapp'
 
-  # SSH connection and copy
-  # - task: SSH@0
-  #   inputs:
-  #     sshEndpoint: 'ssh_myvm'
-  #     runOptions: 'commands'
-  #     commands: |
-  #       sudo mkdir -p /var/www/myapp  
-  #       sudo scp $(System.DefaultWorkingDirectory)/myapp/*.jar
-
   - task: CopyFilesOverSSH@0
     inputs:
       sshEndpoint: 'ssh_myvm'
-      sourceFolder: '$(Pipeline.Workspace)/myapp/*.jar'
-      contents: '**'
-      targetFolder: 'azurevm@52.191.77.169:/var/www/myapp'
+      sourceFolder: '$(Pipeline.Workspace)/myapp'
+      contents: '**/*'
+      targetFolder: 'azureuser@52.191.77.169:/var/www/myapp'
       readyTimeout: '20000'
 
+  - task: SSH@0
+    inputs:
+      sshEndpoint: 'ssh_myvm'
+      runOptions: 'commands'
+      commands: |
+        sudo mkdir -p /var/www/myapp
