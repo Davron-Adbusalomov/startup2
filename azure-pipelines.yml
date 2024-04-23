@@ -61,7 +61,7 @@ jobs:
             sshEndpoint: 'ssh_myvm'
             runOptions: 'inline'
             inline: |
-              sudo java -jar $(System.DefaultWorkingDirectory)/target/*.jar
+              sudo java -jar $(System.DefaultWorkingDirectory)/myapp/*.jar
 
         # - task: SSH@0
         #   inputs:
