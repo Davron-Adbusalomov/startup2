@@ -70,6 +70,19 @@ jobs:
         #   inputs:
         #     artifactName: 'script' 
         #     downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
+          - task: SSH@0
+            inputs:
+              sshEndpoint: 'ssh_myvm'
+              runOptions: 'commands'
+              commands: |
+                sudo mkdir -p /var/www/myapp
+
+          - task: CopyFilesOverSSH@0
+            inputs:
+              sshEndpoint: 'ssh_myvm' # Replace with your SSH endpoint
+              sourceFolder: '$(Pipeline.Workspace)/drop'
+              contents: '**/target/*.jar'
+              targetFolder: '/var/www/myapp' #shortest
 
           - task: SSH@0
             inputs:
@@ -77,13 +90,8 @@ jobs:
               runOptions: 'inline'
               inline: |
                 echo "Starting deployment script run"
-                sudo java -jar '$(Pipeline.Workspace)/drop/**/target/*.jar' # Update this command if necessary
-        # - task: SSH@0
-        #   inputs:
-        #     sshEndpoint: 'ssh_myvm'
-        #     runOptions: 'commands'
-        #     commands: |
-        #       sudo mkdir -p /var/www/myapp
+                sudo java -jar '/var/www/myapp/*.jar' # Update this command if necessary
+        
 
         # - task: CopyFilesOverSSH@0
         #   inputs:
