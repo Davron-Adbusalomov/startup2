@@ -10,6 +10,7 @@ jar {
 				'Main-Class': 'com.example.startUp2.StartUp2Application'
 		)
 	}
+	archiveBaseName = "app1"
 }
 
 group = 'com.example'
