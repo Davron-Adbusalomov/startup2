@@ -90,7 +90,7 @@ jobs:
               runOptions: 'inline'
               inline: |
                 echo "Starting deployment script run"
-                sudo java -jar '/var/www/myapp/*.jar' # Update this command if necessary
+                sudo java -jar '/var/www/myapp/app1-1.0-SNAPSHOT.jar' # Update this command if necessary
         
 
         # - task: CopyFilesOverSSH@0
