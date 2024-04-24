@@ -177,7 +177,7 @@ jobs:
             sshEndpoint: 'ssh_myvm'
             sourceFolder: '$(Pipeline.Workspace)/drop'  # Download location
             contents: '*.jar' 
-            targetFolder: '/var/www/myapp'
+            targetFolder: '/home/azureuser'
 
         - task: SSH@0
           inputs:
