@@ -26,16 +26,25 @@ jobs:
       javaHomeOption: 'JDKVersion'
       sonarQubeRunAnalysis: false
       spotBugsAnalysis: false
+  - task: CopyFiles@2
+    displayName: 'Copy Files to artifact staging directory'
+    inputs:
+        SourceFolder: '$(System.DefaultWorkingDirectory)'
+        Contents: '**/target/*.?(war|jar)'
+        TargetFolder: $(Build.ArtifactStagingDirectory)
+  - upload: $(Build.ArtifactStagingDirectory)
+    artifact: drop
 
-  # Publish artifact
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/'
-      artifactName: 'drop'
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathToPublish: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
-      artifactName: 'script'
+
+  # # Publish artifact
+  # - task: PublishBuildArtifacts@1
+  #   inputs:
+  #     pathToPublish: '$(Pipeline.Workspace)/s/startUp2/build/libs/'
+  #     artifactName: 'drop'
+  # - task: PublishBuildArtifacts@1
+  #   inputs:
+  #     pathToPublish: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
+  #     artifactName: 'script'
 
 
 - deployment: Java
@@ -46,22 +55,30 @@ jobs:
   strategy:
     runOnce:
       deploy:
-        steps:
-        - task: DownloadBuildArtifacts@0
-          inputs:
-            artifactName: 'drop' 
-            downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
-        - task: DownloadBuildArtifacts@0
-          inputs:
-            artifactName: 'script' 
-            downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
+          steps:
+          - task: Bash@3
+            inputs:
+              targetType: 'inline'
+              script: |
+                # Modify deployment script based on the app type
+                echo "Starting deployment script run"
+                sudo java -jar '$(Pipeline.Workspace)/drop/**/target/*.jar'
 
-        - task: SSH@0
-          inputs:
-            sshEndpoint: 'ssh_myvm'
-            runOptions: 'inline'
-            inline: |
-              sudo java -jar $(System.DefaultWorkingDirectory)/target/app1-0.0.1-SNAPSHOT-plain.jar
+        # - task: DownloadBuildArtifacts@0
+        #   inputs:
+        #     artifactName: 'drop' 
+        #     downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
+        # - task: DownloadBuildArtifacts@0
+        #   inputs:
+        #     artifactName: 'script' 
+        #     downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
+
+        # - task: SSH@0
+        #   inputs:
+        #     sshEndpoint: 'ssh_myvm'
+        #     runOptions: 'inline'
+        #     inline: |
+        #       sudo java -jar $(System.DefaultWorkingDirectory)/target/app1-0.0.1-SNAPSHOT-plain.jar
 
         # - task: SSH@0
         #   inputs:
@@ -78,9 +95,9 @@ jobs:
         #     targetFolder: 'azureuser@52.191.77.169:/var/www/myapp'
         #     readyTimeout: '20000'
 
-        - task: SSH@0
-          inputs:
-            sshEndpoint: 'ssh_myvm'
-            runOptions: 'script'
-            scriptPath: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
-            readyTimeout: '20000'
+        # - task: SSH@0
+        #   inputs:
+        #     sshEndpoint: 'ssh_myvm'
+        #     runOptions: 'script'
+        #     scriptPath: '$(Pipeline.Workspace)/s/startUp2/deploy.sh'
+        #     readyTimeout: '20000'
