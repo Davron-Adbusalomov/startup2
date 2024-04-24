@@ -186,4 +186,4 @@ jobs:
             inline: |
               echo "Starting deployment script run"
               # Use full path to ensure Java is found
-              java -jar '/var/www/myapp/app1-1.0-SNAPSHOT.jar'
+              java -jar '/home/azureuser/app1-1.0-SNAPSHOT.jar'
