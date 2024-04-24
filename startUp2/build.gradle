@@ -10,11 +10,11 @@ jar {
 				'Main-Class': 'com.example.startUp2.StartUp2Application'
 		)
 	}
-	archiveBaseName = "app1"
 }
 
+archivesBaseName = 'app1'
+version = '1.0-SNAPSHOT'
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
 
 java {
 	sourceCompatibility = '17'
