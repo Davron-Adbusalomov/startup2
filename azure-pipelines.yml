@@ -54,25 +54,13 @@ jobs:
   environment: azurevm
   strategy:
     runOnce:
+      preDeploy:
+            steps:
+            - download: current
+              artifact: drop
+            - script: echo initialize, cleanup, backup, install certs
       deploy:
           steps:
-            - task: PowerShell@2
-              inputs:
-                targetType: 'inline'
-                script: |
-                  echo "Starting deployment script run"
-                  
-                            # Assuming your JAR file is in the 'drop' artifact
-                            $jarFile = Get-ChildItem -Path "$(Pipeline.Workspace)\drop\**\target\*.jar" -File | Select-Object -First 1
-                  & java -jar $jarFile.FullName
-
-          # - task: Bash@3
-          #   inputs:
-          #     targetType: 'inline'
-          #     script: |
-          #       # Modify deployment script based on the app type
-          #       echo "Starting deployment script run"
-          #       sudo java -jar '$(Pipeline.Workspace)/drop/**/target/*.jar'
 
         # - task: DownloadBuildArtifacts@0
         #   inputs:
@@ -83,13 +71,13 @@ jobs:
         #     artifactName: 'script' 
         #     downloadPath: '$(System.DefaultWorkingDirectory)/myapp'
 
-        # - task: SSH@0
-        #   inputs:
-        #     sshEndpoint: 'ssh_myvm'
-        #     runOptions: 'inline'
-        #     inline: |
-        #       sudo java -jar $(System.DefaultWorkingDirectory)/target/app1-0.0.1-SNAPSHOT-plain.jar
-
+          - task: SSH@0
+            inputs:
+              sshEndpoint: 'ssh_myvm'
+              runOptions: 'inline'
+              inline: |
+                echo "Starting deployment script run"
+                sudo java -jar '$(Pipeline.Workspace)/drop/**/target/*.jar' # Update this command if necessary
         # - task: SSH@0
         #   inputs:
         #     sshEndpoint: 'ssh_myvm'
