@@ -61,7 +61,7 @@ jobs:
             sshEndpoint: 'ssh_myvm'
             runOptions: 'inline'
             inline: |
-              sudo java -jar $(System.DefaultWorkingDirectory)/drop/startUp2-0.0.1-SNAPSHOT-plain.jar
+              sudo java -jar $(System.DefaultWorkingDirectory)/target/app1-0.0.1-SNAPSHOT-plain.jar
 
         # - task: SSH@0
         #   inputs:
