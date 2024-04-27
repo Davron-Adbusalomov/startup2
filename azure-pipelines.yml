@@ -51,8 +51,6 @@ jobs:
 
 - deployment: Java
   dependsOn: build
-  pool:
-    name: 'default'
   environment: azurevm
   strategy:
     runOnce:
