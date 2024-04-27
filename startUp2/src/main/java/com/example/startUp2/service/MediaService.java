@@ -11,13 +11,13 @@ import java.io.IOException;
 
 @Service
 public class MediaService {
-    String connectionString = "DefaultEndpointsProtocol=https;AccountName=startuptwo;AccountKey=2IrSoCHZrpjqFOTa4l7LNQe8QWv/7Ho5miRdPJzOuVm+EBQAaDdGk+ZjnsLsUaxVu0i4SXE371cP+AStQTzcJw==;EndpointSuffix=core.windows.net";
+    String connectionString = "DefaultEndpointsProtocol=https;AccountName=startupone;AccountKey=nVXUNnqSIKBVpdGhAp/qD8c22WECVTdDP6FLAxjLSp9sY9lwzryL3R07IqRuL1968YQcVUGeoWrL+ASt+HI22w==;EndpointSuffix=core.windows.net";
     private final BlobServiceClient blobServiceClient=new BlobServiceClientBuilder()
             .connectionString(connectionString)
             .buildClient();;
 
     public String uploadMedia(MultipartFile file) {
-        BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient("startup2");
+        BlobContainerClient containerClient = blobServiceClient.getBlobContainerClient("startup1");
 
         String mediaName = UUID.randomUUID().toString() + "-" + file.getOriginalFilename();
 
