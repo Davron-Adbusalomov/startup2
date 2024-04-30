@@ -11,16 +11,11 @@ jobs:
     inputs:
       versionSpec: '19'
       jdkArchitectureOption: 'x64'
-      jdkSourceOption: 'PreInstalled'
-  # - task: JavaToolInstaller@0
-  #   inputs:
-  #     versionSpec: '19'
-  #     jdkArchitectureOption: 'x64'
-  #     jdkSourceOption: 'LocalDirectory'
-  #     jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
-  #     jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
-  #     cleanDestinationDirectory: true
-  #     createExtractDirectory: false
+      jdkSourceOption: 'LocalDirectory'
+      jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
+      jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
+      cleanDestinationDirectory: true
+      createExtractDirectory: false
 
   - task: Gradle@3
     inputs:
