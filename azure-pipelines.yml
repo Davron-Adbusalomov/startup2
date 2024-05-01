@@ -49,7 +49,7 @@ jobs:
     #     artifactName: 'drop'
 
 
-  - deployment: Java
+  - deployment: DeployJava
     dependsOn: build
     environment: azurevm
     strategy:
