@@ -54,19 +54,17 @@ jobs:
     environment: azurevm
     strategy:
       runOnce:
-        preDeploy:
-          steps:
-          - download: current
-            artifact: drop
-          - script: echo initialize, cleanup, backup, install certs
         deploy:
           steps:
+            - download: current
+              artifact: drop
+            - script: echo initialize, cleanup, backup, install certs
             - task: Bash@3
               inputs:
                 targetType: 'inline'
                 script: |
                   echo "Starting deployment script."
-                  sudo cp '$(Pipeline.Workspace)/drop/**/target/*' /home/azureuser
+                  sudo cp '$(Pipeline.Workspace)/drop/*' /home/azureuser
                   sudo /home/azureuser/deploy.sh
             # - task: SSH@0
             #   inputs:
