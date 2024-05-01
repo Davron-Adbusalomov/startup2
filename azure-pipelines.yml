@@ -1,105 +1,105 @@
 trigger:
 - main
 
-pool:
-  name: Default
 
 jobs:
-- job: build
-  steps:
-  - task: JavaToolInstaller@0
-    inputs:
-      versionSpec: '19'
-      jdkArchitectureOption: 'x64'
-      jdkSourceOption: 'LocalDirectory'
-      jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
-      jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
-      cleanDestinationDirectory: true
-      createExtractDirectory: false
+  - job: build
+    pool:
+      name: Default
+    steps:
+    - task: JavaToolInstaller@0
+      inputs:
+        versionSpec: '19'
+        jdkArchitectureOption: 'x64'
+        jdkSourceOption: 'LocalDirectory'
+        jdkFile: 'C:\agent\openjdk-19.0.1-1.zip'
+        jdkDestinationDirectory: 'C:\agent\openjdk-19.0.1-1'
+        cleanDestinationDirectory: true
+        createExtractDirectory: false
 
-  - task: Gradle@3
-    inputs:
-      gradleWrapperFile: 'startUp2/gradlew.bat'
-      workingDirectory: 'startUp2'
-      tasks: 'build'
-      publishJUnitResults: false
-      javaHomeOption: 'JDKVersion'
-      sonarQubeRunAnalysis: false
-      spotBugsAnalysis: false
+    - task: Gradle@3
+      inputs:
+        gradleWrapperFile: 'startUp2/gradlew.bat'
+        workingDirectory: 'startUp2'
+        tasks: 'build'
+        publishJUnitResults: false
+        javaHomeOption: 'JDKVersion'
+        sonarQubeRunAnalysis: false
+        spotBugsAnalysis: false
 
-  - task: CopyFiles@2
-    displayName: 'Copy JAR to artifact staging directory'
-    inputs:
-      SourceFolder: 'startUp2/build/libs'
-      Contents: '*.jar'
-      TargetFolder: $(Build.ArtifactStagingDirectory)
-  
-  - task: CopyFiles@2
-    displayName: 'Copy deploy.sh to artifact staging directory'
-    inputs:
-      SourceFolder: 'startUp2/'
-      Contents: 'deploy.sh'
-      TargetFolder: $(Build.ArtifactStagingDirectory)
+    - task: CopyFiles@2
+      displayName: 'Copy JAR to artifact staging directory'
+      inputs:
+        SourceFolder: 'startUp2/build/libs'
+        Contents: '*.jar'
+        TargetFolder: $(Build.ArtifactStagingDirectory)
+    
+    - task: CopyFiles@2
+      displayName: 'Copy deploy.sh to artifact staging directory'
+      inputs:
+        SourceFolder: 'startUp2/'
+        Contents: 'deploy.sh'
+        TargetFolder: $(Build.ArtifactStagingDirectory)
 
-  - publish: $(Build.ArtifactStagingDirectory)
-    artifact: drop
-  # - task: PublishPipelineArtifact@1
-  #   inputs:
-  #     targetPath: $(Build.ArtifactStagingDirectory)
-  #     artifactName: 'drop'
+    - publish: $(Build.ArtifactStagingDirectory)
+      artifact: drop
+    # - task: PublishPipelineArtifact@1
+    #   inputs:
+    #     targetPath: $(Build.ArtifactStagingDirectory)
+    #     artifactName: 'drop'
 
 
-- deployment: Java
-  dependsOn: build
-  environment: azurevm
-  strategy:
-    runOnce:
-      preDeploy:
-        steps:
-        - download: current
-          artifact: drop
-        - script: echo initialize, cleanup, backup, install certs
-      deploy:
-        steps:
-          - task: Bash@3
-            inputs:
-              targetType: 'inline'
-              script: |
-                echo "Starting deployment script."
-                sudo cp '$(Pipeline.Workspace)/drop/**/target/*' /home/azureuser
-                sudo /home/azureuser/deploy.sh
-          # - task: SSH@0
-          #   inputs:
-          #     sshEndpoint: 'ssh_myvm'
-          #     runOptions: 'inline'
-          #     inline: |
-          #       echo "Starting deployment script run"
-          #       sudo java -jar '//app1-1.0-SNAPSHOT.jar'
-          # - task: SSH@0
-          #   inputs:
-          #     sshEndpoint: 'ssh_myvm'
-          #     runOptions: 'commands'
-          #     commands: |
-          #       sudo mkdir -p /var/www/
-
-          # - task: CopyFilesOverSSH@0
-          #   inputs:
-          #     sshEndpoint: 'ssh_myvm'
-          #     sourceFolder: '$(Pipeline.Workspace)/drop'  # Download location
-          #     contents: '*' 
-          #     targetFolder: '/home/azureuser'
-
-          # - task: SSH@0
-          #   inputs:
-          #     sshEndpoint: 'ssh_myvm'
-          #     runOptions: 'inline'
-          #     inline: |
-          #       echo "Starting deployment script run"
-          #       java -jar '/home/azureuser/app1-1.0-SNAPSHOT.jar'
-      on:
-        failure:
+  - deployment: Java
+    dependsOn: build
+    environment: azurevm
+    strategy:
+      runOnce:
+        preDeploy:
           steps:
-          - script: echo Restore from backup! This is on failure.
-        success:
+          - download: current
+            artifact: drop
+          - script: echo initialize, cleanup, backup, install certs
+        deploy:
           steps:
-          - script: echo Notify! This is on success.
+            - task: Bash@3
+              inputs:
+                targetType: 'inline'
+                script: |
+                  echo "Starting deployment script."
+                  sudo cp '$(Pipeline.Workspace)/drop/**/target/*' /home/azureuser
+                  sudo /home/azureuser/deploy.sh
+            # - task: SSH@0
+            #   inputs:
+            #     sshEndpoint: 'ssh_myvm'
+            #     runOptions: 'inline'
+            #     inline: |
+            #       echo "Starting deployment script run"
+            #       sudo java -jar '//app1-1.0-SNAPSHOT.jar'
+            # - task: SSH@0
+            #   inputs:
+            #     sshEndpoint: 'ssh_myvm'
+            #     runOptions: 'commands'
+            #     commands: |
+            #       sudo mkdir -p /var/www/
+
+            # - task: CopyFilesOverSSH@0
+            #   inputs:
+            #     sshEndpoint: 'ssh_myvm'
+            #     sourceFolder: '$(Pipeline.Workspace)/drop'  # Download location
+            #     contents: '*' 
+            #     targetFolder: '/home/azureuser'
+
+            # - task: SSH@0
+            #   inputs:
+            #     sshEndpoint: 'ssh_myvm'
+            #     runOptions: 'inline'
+            #     inline: |
+            #       echo "Starting deployment script run"
+            #       java -jar '/home/azureuser/app1-1.0-SNAPSHOT.jar'
+        on:
+          failure:
+            steps:
+            - script: echo Restore from backup! This is on failure.
+          success:
+            steps:
+            - script: echo Notify! This is on success.
